@@ -1,0 +1,54 @@
+class Solution {
+public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+
+// If both nodes are smaller than root, search left
+if (p.val < root.val && q.val < root.val) {
+return lowestCommonAncestor(root.left, p, q);
+}
+
+// If both nodes are greater than root, search right
+if (p.val > root.val && q.val > root.val) {
+return lowestCommonAncestor(root.right, p, q);
+}
+
+// Otherwise, current root is the LCA
+return root;
+}
+}
+
+
+case1
+
+
+Input
+root =
+[6,2,8,0,4,7,9,null,null,3,5]
+p =
+2
+q =
+8
+Output
+6
+Expected
+6
+
+
+
+case2
+
+
+Input
+root =
+[6,2,8,0,4,7,9,null,null,3,5]
+p =
+2
+q =
+4
+Output
+2
+Expected
+2
+
+
+
+
