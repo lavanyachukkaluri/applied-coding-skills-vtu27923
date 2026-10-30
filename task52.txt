@@ -1,0 +1,62 @@
+import java.util.*;
+
+class Solution {
+public int[] topKFrequent(int[] nums, int k) {
+
+HashMap<Integer, Integer> map = new HashMap<>();
+
+// Count frequency of each element
+for (int num : nums) {
+map.put(num, map.getOrDefault(num, 0) + 1);
+}
+
+// Create Max Heap based on frequency
+PriorityQueue<Integer> pq = new PriorityQueue<>(
+(a, b) -> map.get(b) - map.get(a)
+);
+
+// Add unique elements to heap
+pq.addAll(map.keySet());
+
+// Store k most frequent elements
+int[] result = new int[k];
+
+for (int i = 0; i < k; i++) {
+result[i] = pq.poll();
+}
+
+return result;
+}
+}
+
+
+case1
+
+
+Input
+nums =
+[1,1,1,2,2,3]
+k =
+2
+Output
+[1,2]
+Expected
+[1,2]
+
+
+
+
+
+case2
+
+
+Input
+nums =
+[1]
+k =
+1
+Output
+[1]
+Expected
+[1]
+Contribute
