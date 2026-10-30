@@ -1,0 +1,62 @@
+
+import java.util.*;
+
+class Solution {
+public List<Integer> postorderTraversal(TreeNode root) {
+
+List<Integer> result = new ArrayList<>();
+
+if (root == null) {
+return result;
+}
+
+Stack<TreeNode> stack = new Stack<>();
+stack.push(root);
+
+while (!stack.isEmpty()) {
+
+TreeNode current = stack.pop();
+result.add(current.val);
+
+if (current.left != null) {
+stack.push(current.left);
+}
+
+if (current.right != null) {
+stack.push(current.right);
+}
+}
+
+Collections.reverse(result);
+
+return result;
+}
+}
+
+
+
+
+
+case1:
+
+
+Input
+root =
+[1,null,2,3]
+Output
+[3,2,1]
+Expected
+[3,2,1]
+
+
+
+case2
+
+
+Input
+root =
+[1,2,3,4,5,null,8,null,null,6,7,9]
+Output
+[4,6,7,5,2,9,8,3,1]
+Expected
+[4,6,7,5,2,9,8,3,1]
